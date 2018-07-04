@@ -11,10 +11,15 @@ auto getPerson() {
     return std::make_tuple( name, secondName, age, department);
 }
 
+template <typename... Args>
+auto custom_tie(Args&... args) {
+    return std::tuple<Args&...>(args...);
+}
 
 int main(int argc, char * argv[]) {
     std::string name, secondName, department;
     std::size_t age;
+
     custom_tie(name, secondName, age, department) = getPerson();
     
     assert(name == "Petia");
